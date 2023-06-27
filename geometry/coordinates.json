@@ -53,18 +53,15 @@
 
         "direction-cosine-x": {
             "@id": "geom-coord:direction-cosine-x",
-            "@container": "@list",
-            "@type": "xsd:double"
+            "@container": "@list"
         },
         "direction-cosine-y": {
             "@id": "geom-coord:direction-cosine-y",
-            "@container": "@list",
-            "@type": "xsd:double"
+            "@container": "@list"
         },
         "direction-cosine-z": {
             "@id": "geom-coord:direction-cosine-z",
-            "@container": "@list",
-            "@type": "xsd:double"
+            "@container": "@list"
         },
 
         "x": {
