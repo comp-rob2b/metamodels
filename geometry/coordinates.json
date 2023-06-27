@@ -11,12 +11,8 @@
         "PoseCoordinate": "geom-coord:PoseCoordinate",
 
         "Coordinates": "geom-coord:Coordinates",
-        "RotationRowXYZ": "geom-coord:RotationRowXYZ",
+        "DirectionCosineXYZ": "geom-coord:DirectionCosineXYZ",
         "VectorXYZ": "geom-coord:VectorXYZ",
-        "RowXY": "geom-coord:RowXY",
-        "RowXYW": "geom-coord:RowXYW",
-        "RowXYZW": "geom-coord:RowXYZW",
-        "AngularLinear": "geom-coord:AngularLinear",
 
         "of-orientation": {
             "@id": "geom-coord:of-orientation",
@@ -63,7 +59,6 @@
             "@id": "geom-coord:direction-cosine-z",
             "@container": "@list"
         },
-
         "x": {
             "@id": "geom-coord:x",
             "@type": "xsd:double"
