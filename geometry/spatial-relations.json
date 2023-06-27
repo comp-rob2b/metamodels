@@ -1,25 +1,25 @@
 {
     "@context": {
-        "geom": "https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#",
+        "geom-rel": "https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#",
 
-        "Orientation": "geom:Orientation",
-        "Position": "geom:Position",
-        "Pose": "geom:Pose",
+        "Orientation": "geom-rel:Orientation",
+        "Position": "geom-rel:Position",
+        "Pose": "geom-rel:Pose",
 
         "of": {
-            "@id": "geom:of",
+            "@id": "geom-rel:of",
             "@type": "@id"
         },
         "with-respect-to": {
-            "@id": "geom:with-respect-to",
+            "@id": "geom-rel:with-respect-to",
             "@type": "@id"
         },
 
 
-        "LineCollinearity": "geom:LineCollinearity",
+        "LineCollinearity": "geom-rel:LineCollinearity",
 
         "lines": {
-            "@id": "geom:lines",
+            "@id": "geom-rel:lines",
             "@type": "@id"
         }
     }
