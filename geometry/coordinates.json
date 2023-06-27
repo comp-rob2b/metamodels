@@ -1,82 +1,82 @@
 {
     "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "geom": "https://comp-rob2b.github.io/metamodels/geometry/coordinates#",
+        "geom-coord": "https://comp-rob2b.github.io/metamodels/geometry/coordinates#",
 
-        "OrientationReference": "geom:OrientationReference",
-        "PositionReference": "geom:PositionReference",
-        "PoseReference": "geom:PoseReference",
-        "OrientationCoordinate": "geom:OrientationCoordinate",
-        "PositionCoordinate": "geom:PositionCoordinate",
-        "PoseCoordinate": "geom:PoseCoordinate",
+        "OrientationReference": "geom-coord:OrientationReference",
+        "PositionReference": "geom-coord:PositionReference",
+        "PoseReference": "geom-coord:PoseReference",
+        "OrientationCoordinate": "geom-coord:OrientationCoordinate",
+        "PositionCoordinate": "geom-coord:PositionCoordinate",
+        "PoseCoordinate": "geom-coord:PoseCoordinate",
 
-        "Coordinates": "geom:Coordinates",
-        "RotationRowXYZ": "geom:RotationRowXYZ",
-        "VectorXYZ": "geom:VectorXYZ",
-        "RowXY": "geom:RowXY",
-        "RowXYW": "geom:RowXYW",
-        "RowXYZW": "geom:RowXYZW",
-        "AngularLinear": "geom:AngularLinear",
+        "Coordinates": "geom-coord:Coordinates",
+        "RotationRowXYZ": "geom-coord:RotationRowXYZ",
+        "VectorXYZ": "geom-coord:VectorXYZ",
+        "RowXY": "geom-coord:RowXY",
+        "RowXYW": "geom-coord:RowXYW",
+        "RowXYZW": "geom-coord:RowXYZW",
+        "AngularLinear": "geom-coord:AngularLinear",
 
         "of-orientation": {
-            "@id": "geom:of-orientation",
+            "@id": "geom-coord:of-orientation",
             "@type": "@id"
         },
         "of-position": {
-            "@id": "geom:of-position",
+            "@id": "geom-coord:of-position",
             "@type": "@id"
         },
         "of-pose": {
-            "@id": "geom:of-pose",
+            "@id": "geom-coord:of-pose",
             "@type": "@id"
         },
         "as-seen-by": {
-            "@id": "geom:as-seen-by",
+            "@id": "geom-coord:as-seen-by",
             "@type": "@id"
         },
 
         "coordinates": {
-            "@id": "geom:coordinates",
+            "@id": "geom-coord:coordinates",
             "@type": "@id",
             "@container": "@list"
         },
         "angular": {
-            "@id": "geom:angular",
+            "@id": "geom-coord:angular",
             "@type": "@id",
             "@container": "@list"
         },
         "linear": {
-            "@id": "geom:linear",
+            "@id": "geom-coord:linear",
             "@type": "@id",
             "@container": "@list"
         },
 
         "direction-cosine-x": {
-            "@id": "geom:direction-cosine-x",
+            "@id": "geom-coord:direction-cosine-x",
             "@container": "@list",
             "@type": "xsd:double"
         },
         "direction-cosine-y": {
-            "@id": "geom:direction-cosine-y",
+            "@id": "geom-coord:direction-cosine-y",
             "@container": "@list",
             "@type": "xsd:double"
         },
         "direction-cosine-z": {
-            "@id": "geom:direction-cosine-z",
+            "@id": "geom-coord:direction-cosine-z",
             "@container": "@list",
             "@type": "xsd:double"
         },
 
         "x": {
-            "@id": "geom:x",
+            "@id": "geom-coord:x",
             "@type": "xsd:double"
         },
         "y": {
-            "@id": "geom:y",
+            "@id": "geom-coord:y",
             "@type": "xsd:double"
         },
         "z": {
-            "@id": "geom:z",
+            "@id": "geom-coord:z",
             "@type": "xsd:double"
         }
     }
