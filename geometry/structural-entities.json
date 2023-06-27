@@ -16,6 +16,8 @@
         "Frame": "geom:Frame",
         "Orthonormal": "geom:Orthonormal",
         "Orthogonal": "geom:Orthogonal",
+        "RightHanded": "geom:RightHanded",
+        "RigidBody": "geom:RigidBody",
         "VectorsXYZ": "geom:VectorsXYZ",
         "OriginVectorsXYZ": "geom:OriginVectorsXYZ",
         "VectorList": "geom:VectorList",
