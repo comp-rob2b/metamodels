@@ -6,13 +6,22 @@
         "OrientationReference": "geom-coord:OrientationReference",
         "PositionReference": "geom-coord:PositionReference",
         "PoseReference": "geom-coord:PoseReference",
+        "VelocityReference": "geom-coord:VelocityReference",
+        "AccelerationReference": "geom-coord:AccelerationReference",
+
         "OrientationCoordinate": "geom-coord:OrientationCoordinate",
         "PositionCoordinate": "geom-coord:PositionCoordinate",
         "PoseCoordinate": "geom-coord:PoseCoordinate",
+        "VelocityTwistCoordinate": "geom-coord:VelocityTwistCoordinate",
+        "AccelerationTwistCoordinate": "geom-coord:AccelerationTwistCoordinate",
 
         "Coordinates": "geom-coord:Coordinates",
         "DirectionCosineXYZ": "geom-coord:DirectionCosineXYZ",
         "VectorXYZ": "geom-coord:VectorXYZ",
+        "AngularVelocityVectorXYZ": "geom-coord:AngularVelocityVectorXYZ",
+        "LinearVelocityVectorXYZ": "geom-coord:LinearVelocityVectorXYZ",
+        "AngularAccelerationVectorXYZ": "geom-coord:AngularAccelerationVectorXYZ",
+        "LinearAccelerationVectorXYZ": "geom-coord:LinearAccelerationVectorXYZ",
 
         "of-orientation": {
             "@id": "geom-coord:of-orientation",
@@ -24,6 +33,14 @@
         },
         "of-pose": {
             "@id": "geom-coord:of-pose",
+            "@type": "@id"
+        },
+        "of-velocity": {
+            "@id": "geom-coord:of-velocity",
+            "@type": "@id"
+        },
+        "of-acceleration": {
+            "@id": "geom-coord:of-acceleration",
             "@type": "@id"
         },
         "as-seen-by": {
@@ -70,6 +87,22 @@
         "z": {
             "@id": "geom-coord:z",
             "@type": "xsd:double"
+        },
+        "angular-velocity": {
+            "@id": "geom-coord:angular-velocity",
+            "@container": "@list"
+        },
+        "linear-velocity": {
+            "@id": "geom-coord:linear-velocity",
+            "@container": "@list"
+        },
+        "angular-acceleration": {
+            "@id": "geom-coord:angular-acceleration",
+            "@container": "@list"
+        },
+        "linear-acceleration": {
+            "@id": "geom-coord:linear-acceleration",
+            "@container": "@list"
         }
     }
 }
