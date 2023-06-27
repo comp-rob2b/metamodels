@@ -5,6 +5,12 @@
         "Orientation": "geom-rel:Orientation",
         "Position": "geom-rel:Position",
         "Pose": "geom-rel:Pose",
+        "AngularVelocity": "geom-rel:AngularVelocity",
+        "LinearVelocity": "geom-rel:LinearVelocity",
+        "VelocityTwist": "geom-rel:VelocityTwist",
+        "AngularAcceleration": "geom-rel:AngularAcceleration",
+        "LinearAcceleration": "geom-rel:LinearAcceleration",
+        "AccelerationTwist": "geom-rel:AccelerationTwist",
 
         "of": {
             "@id": "geom-rel:of",
@@ -12,6 +18,10 @@
         },
         "with-respect-to": {
             "@id": "geom-rel:with-respect-to",
+            "@type": "@id"
+        },
+        "reference-point": {
+            "@id": "geom-rel:reference-point",
             "@type": "@id"
         },
 
