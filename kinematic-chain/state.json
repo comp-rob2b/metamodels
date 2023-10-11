@@ -1,13 +1,13 @@
 {
     "@context": {
-        "kc": "https://comp-rob2b.github.io/metamodels/kinematic-chain/state#",
+        "kc-stat": "https://comp-rob2b.github.io/metamodels/kinematic-chain/state#",
 
-        "JointReference": "kc:JointReference",
-        "RevoluteJointPosition": "kc:RevoluteJointPosition",
-        "RevoluteJointPositionCoordinate": "kc:RevoluteJointPositionCoordinate",
+        "JointReference": "kc-stat:JointReference",
+        "RevoluteJointPosition": "kc-stat:RevoluteJointPosition",
+        "RevoluteJointPositionCoordinate": "kc-stat:RevoluteJointPositionCoordinate",
 
         "of-joint": {
-            "@id": "kc:of-joint",
+            "@id": "kc-stat:of-joint",
             "@type": "@id"
         }
     }
