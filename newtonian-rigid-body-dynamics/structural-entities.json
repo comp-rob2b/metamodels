@@ -1,0 +1,19 @@
+{
+    "@context": {
+        "dyn-ent": "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#",
+
+        "Mass": "dyn-ent:Mass",
+        "FirstMomentOfMass": "dyn-ent:FirstMomentOfMass",
+        "RotationalInertia": "dyn-ent:RotationalInertia",
+        "RigidBodyInertia": "dyn-ent:RigidBodyInertia",
+
+        "of": {
+            "@id": "dyn-ent:of",
+            "@type": "@id"
+        },
+        "about": {
+            "@id": "dyn-ent:about",
+            "@type": "@id"
+        }
+    }
+}

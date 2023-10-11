@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "dyn-coord": "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#",
+
+        "MassReference": "dyn-coord:MassReference",
+        "MassScalar": "dyn-coord:MassScalar",
+        "InertiaReference": "dyn-coord:InertiaReference",
+        "MassCoordinate": "dyn-coord:MassCoordinate",
+        "FirstMomentOfMassVectorXYZ": "dyn-coord:FirstMomentOfMassVectorXYZ",
+        "RotationalInertiaCoordinate": "dyn-coord:RotationalInertiaCoordinate",
+        "MomentOfInertiaXYZ": "dyn-coord:MomentOfInertiaXYZ",
+        "ProductOfInertiaXYZ": "dyn-coord:ProductOfInertiaXYZ",
+        "RigidBodyInertiaCoordinate": "dyn-coord:RigidBodyInertiaCoordinate",
+
+        "of-mass": {
+            "@id": "dyn-coord:of-mass",
+            "@type": "@id"
+        },
+        "of-inertia": {
+            "@id": "dyn-coord:of-inertia",
+            "@type": "@id"
+        },
+        "mass": {
+            "@id": "dyn-coord:mass",
+            "@type": "xsd:double"
+        },
+        "first-moment-of-mass": {
+            "@id": "dyn-coord:first-moment-of-mass",
+            "@container": "@list"
+        },
+        "ixx": {
+            "@id": "dyn-coord:ixx",
+            "@type": "xsd:double"
+        },
+        "ixy": {
+            "@id": "dyn-coord:ixy",
+            "@type": "xsd:double"
+        },
+        "ixz": {
+            "@id": "dyn-coord:ixz",
+            "@type": "xsd:double"
+        },
+        "iyy": {
+            "@id": "dyn-coord:iyy",
+            "@type": "xsd:double"
+        },
+        "iyz": {
+            "@id": "dyn-coord:iyz",
+            "@type": "xsd:double"
+        },
+        "izz": {
+            "@id": "dyn-coord:izz",
+            "@type": "xsd:double"
+        }
+    }
+}
