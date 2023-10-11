@@ -2,7 +2,17 @@
     "@context": {
         "kc-stat": "https://comp-rob2b.github.io/metamodels/kinematic-chain/state#",
 
+        "JointPosition": "kc-stat:JointPosition",
+        "JointVelocity": "kc-stat:JointVelocity",
+        "JointAcceleration": "kc-stat:JointAcceleration",
+        "JointForce": "kc-stat:JointForce",
+
         "JointReference": "kc-stat:JointReference",
+        "JointPositionCoordinate": "kc-stat:JointPositionCoordinate",
+        "JointVelocityCoordinate": "kc-stat:JointVelocityCoordinate",
+        "JointAccelerationCoordinate": "kc-stat:JointAccelerationCoordinate",
+        "JointForceCoordinate": "kc-stat:JointForceCoordinate",
+
         "RevoluteJointPosition": "kc-stat:RevoluteJointPosition",
         "RevoluteJointPositionCoordinate": "kc-stat:RevoluteJointPositionCoordinate",
 
