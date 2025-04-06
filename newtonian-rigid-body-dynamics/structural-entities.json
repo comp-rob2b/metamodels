@@ -1,19 +1,68 @@
 {
     "@context": {
+        "@version": 1.1,
         "dyn-ent": "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#",
 
-        "Mass": "dyn-ent:Mass",
-        "FirstMomentOfMass": "dyn-ent:FirstMomentOfMass",
-        "RotationalInertia": "dyn-ent:RotationalInertia",
-        "RigidBodyInertia": "dyn-ent:RigidBodyInertia",
-
-        "of": {
-            "@id": "dyn-ent:of",
-            "@type": "@id"
+        "Wrench": {
+            "@id": "dyn-ent:Wrench",
+            "@context": {
+                "acts-on": {
+                    "@id": "dyn-ent:acts-on",
+                    "@type": "@id"
+                },
+                "reference-point": {
+                    "@id": "dyn-ent:reference-point",
+                    "@type": "@id"
+                }
+            }
         },
-        "about": {
-            "@id": "dyn-ent:about",
-            "@type": "@id"
+        "Mass": {
+            "@id": "dyn-ent:Mass",
+            "@context": {
+                "of-body": {
+                    "@id": "dyn-ent:of-body",
+                    "@type": "@id"
+                }
+            }
+        },
+        "FirstMomentOfMass": {
+            "@id": "dyn-ent:FirstMomentOfMass",
+            "@context": {
+                "of-body": {
+                    "@id": "dyn-ent:of-body",
+                    "@type": "@id"
+                },
+                "about": {
+                    "@id": "dyn-ent:about",
+                    "@type": "@id"
+                }
+            }
+        },
+        "RotationalInertia": {
+            "@id": "dyn-ent:RotationalInertia",
+            "@context": {
+                "of-body": {
+                    "@id": "dyn-ent:of-body",
+                    "@type": "@id"
+                },
+                "about": {
+                    "@id": "dyn-ent:about",
+                    "@type": "@id"
+                }
+            }
+        },
+        "RigidBodyInertia": {
+            "@id": "dyn-ent:RigidBodyInertia",
+            "@context": {
+                "of-body": {
+                    "@id": "dyn-ent:of-body",
+                    "@type": "@id"
+                },
+                "about": {
+                    "@id": "dyn-ent:about",
+                    "@type": "@id"
+                }
+            }
         }
     }
 }

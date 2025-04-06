@@ -1,0 +1,336 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geom-ent: <https://comp-rob2b.github.io/metamodels/geometry/structural-entities#> .
+@prefix geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#> .
+@prefix geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#> .
+
+geom-coord:OrientationReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of-orientation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-rel:Orientation
+    ] .
+
+geom-coord:PositionReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of-position ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-rel:Position
+    ] .
+
+geom-coord:PoseReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of-pose ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-rel:Pose
+    ] .
+
+geom-coord:VelocityReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of-velocity ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:xone (
+            [ sh:class geom-rel:AngularVelocity ]
+            [ sh:class geom-rel:LinearVelocity ]
+            [ sh:class geom-rel:VelocityTwist ]
+        )
+    ] .
+
+geom-coord:AccelerationReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of-acceleration ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:xone (
+            [ sh:class geom-rel:AngularAcceleration ]
+            [ sh:class geom-rel:LinearAcceleration ]
+            [ sh:class geom-rel:AccelerationTwist ]
+        )
+    ] .
+
+geom-coord:DistanceReference
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:of ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-rel:LinearDistance
+    ] .
+
+geom-coord:OrientationCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-coord:PositionCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-coord:PoseCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] ;
+    sh:sparql geom-coord:PoseCoordinate-asb-equals-wrt .
+
+geom-coord:PoseCoordinate-asb-equals-wrt
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#>
+        SELECT $this
+        WHERE {
+            $this geom-coord:as-seen-by ?asb .
+            $this geom-rel:with-respect-to ?wrt .
+            FILTER(?asb != ?wrt)
+        }
+    """ .
+
+geom-coord:VelocityTwistCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-coord:AccelerationTwistCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-coord:DirectionCoordinate
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:as-seen-by ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-coord:DirectionCosineXYZ-orthogonal-matrix
+    a sh:SPARQLConstraint ;
+    sh:message "DirectionCosineXYZ must represent an orthogonal matrix." ;
+    sh:select """
+        PREFIX geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#>
+        SELECT $this
+        WHERE {
+            $this geom-coord:direction-cosine-x (?xx ?xy ?xz) ;
+                  geom-coord:direction-cosine-y (?yx ?yy ?yz) ;
+                  geom-coord:direction-cosine-z (?zx ?zy ?zz) .
+            BIND((
+                  (?xx * ?yy * ?zz) + (?yx * ?zy * ?xz) + (?zx * ?xy * ?yz)
+                - (?zx * ?yy * ?xz) - (?yx * ?xy * ?zz) - (?xx * ?zy * ?yz))
+                AS ?determinant) .
+            FILTER(ABS(?determinant - 1.0) > 0.001)
+        }
+    """ .
+
+geom-coord:DirectionCosineXYZ-no-coordinates
+    a sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-x ;
+        sh:minCount 0 ;
+        sh:maxCount 0
+    ] ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-y ;
+        sh:minCount 0 ;
+        sh:maxCount 0
+    ] ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-z ;
+        sh:minCount 0 ;
+        sh:maxCount 0
+    ] .
+
+geom-coord:DirectionCosineXYZ-three-coordinates
+    a sh:NodeShape ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-x ;
+        sh:minCount 3 ;
+        sh:maxCount 3 ;
+        sh:datatype xsd:double
+    ] ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-y ;
+        sh:minCount 3 ;
+        sh:maxCount 3 ;
+        sh:datatype xsd:double
+    ] ;
+    sh:property [
+        sh:path geom-coord:direction-cosine-z ;
+        sh:minCount 3 ;
+        sh:maxCount 3 ;
+        sh:datatype xsd:double
+    ] ;
+    sh:sparql geom-coord:DirectionCosineXYZ-orthogonal-matrix .
+
+
+geom-coord:DirectionCosineXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [ sh:node geom-coord:DirectionCosineXYZ-no-coordinates ]
+        [ sh:node geom-coord:DirectionCosineXYZ-three-coordinates ]
+    ) .
+
+geom-coord:VectorXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path geom-coord:x ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ] ;
+            sh:property [
+                sh:path geom-coord:y ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ] ;
+            sh:property [
+                sh:path geom-coord:z ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path geom-coord:x ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:datatype xsd:double
+            ] ;
+            sh:property [
+                sh:path geom-coord:y ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:datatype xsd:double
+            ] ;
+            sh:property [
+                sh:path geom-coord:z ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:datatype xsd:double
+            ]
+        ]
+    ) .
+
+geom-coord:AngularVelocityVectorXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path geom-coord:angular-velocity ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path geom-coord:angular-velocity ;
+                sh:minCount 3 ;
+                sh:maxCount 3 ;
+                sh:datatype xsd:double
+            ]
+        ]
+    ) .
+
+geom-coord:LinearVelocityVectorXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path geom-coord:linear-velocity ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path geom-coord:linear-velocity ;
+                sh:minCount 3 ;
+                sh:maxCount 3 ;
+                sh:datatype xsd:double
+            ]
+        ]
+    ) .
+
+geom-coord:AngularAccelerationVectorXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path geom-coord:angular-acceleration ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path geom-coord:angular-acceleration ;
+                sh:minCount 3 ;
+                sh:maxCount 3 ;
+                sh:datatype xsd:double
+            ]
+        ]
+    ) .
+
+geom-coord:LinearAccelerationVectorXYZ
+    a rdfs:Class, sh:NodeShape ;
+    sh:xone (
+        [
+            sh:property [
+                sh:path geom-coord:linear-acceleration ;
+                sh:minCount 0 ;
+                sh:maxCount 0
+            ]
+        ]
+        [
+            sh:property [
+                sh:path geom-coord:linear-acceleration ;
+                sh:minCount 3 ;
+                sh:maxCount 3 ;
+                sh:datatype xsd:double
+            ]
+        ]
+    ) .

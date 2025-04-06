@@ -1,57 +1,135 @@
 {
     "@context": {
+        "@version": 1.1,
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "dyn-coord": "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#",
 
-        "MassReference": "dyn-coord:MassReference",
-        "MassScalar": "dyn-coord:MassScalar",
-        "InertiaReference": "dyn-coord:InertiaReference",
-        "MassCoordinate": "dyn-coord:MassCoordinate",
-        "FirstMomentOfMassVectorXYZ": "dyn-coord:FirstMomentOfMassVectorXYZ",
-        "RotationalInertiaCoordinate": "dyn-coord:RotationalInertiaCoordinate",
-        "MomentOfInertiaXYZ": "dyn-coord:MomentOfInertiaXYZ",
-        "ProductOfInertiaXYZ": "dyn-coord:ProductOfInertiaXYZ",
-        "RigidBodyInertiaCoordinate": "dyn-coord:RigidBodyInertiaCoordinate",
-
-        "of-mass": {
-            "@id": "dyn-coord:of-mass",
-            "@type": "@id"
+        "WrenchReference": {
+            "@id": "dyn-coord:WrenchReference",
+            "@context": {
+                "of-wrench": {
+                    "@id": "dyn-coord:of-wrench",
+                    "@type": "@id"
+                }
+            }
         },
-        "of-inertia": {
-            "@id": "dyn-coord:of-inertia",
-            "@type": "@id"
+        "WrenchCoordinate": {
+            "@id": "dyn-coord:WrenchCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "dyn-coord:as-seen-by",
+                    "@type": "@id"
+                },
+                "number-of-wrenches": {
+                    "@id": "dyn-coord:number-of-wrenches"
+                },
+                "force": {
+                    "@id": "dyn-coord:force",
+                    "@container": "@list"
+                },
+                "torque": {
+                    "@id": "dyn-coord:torque",
+                    "@container": "@list"
+                }
+            }
         },
-        "mass": {
-            "@id": "dyn-coord:mass",
-            "@type": "xsd:double"
+        "MassReference": {
+            "@id": "dyn-coord:MassReference",
+            "@context": {
+                "of-mass": {
+                    "@id": "dyn-coord:of-mass",
+                    "@type": "@id"
+                }
+            }
         },
-        "first-moment-of-mass": {
-            "@id": "dyn-coord:first-moment-of-mass",
-            "@container": "@list"
+        "MassScalar": {
+            "@id": "dyn-coord:MassScalar",
+            "@context": {
+                "mass": {
+                    "@id": "dyn-coord:mass"
+                }
+            }
         },
-        "ixx": {
-            "@id": "dyn-coord:ixx",
-            "@type": "xsd:double"
+        "InertiaReference": {
+            "@id": "dyn-coord:InertiaReference",
+            "@context": {
+                "of-inertia": {
+                    "@id": "dyn-coord:of-inertia",
+                    "@type": "@id"
+                }
+            }
         },
-        "ixy": {
-            "@id": "dyn-coord:ixy",
-            "@type": "xsd:double"
+        "MassCoordinate": {
+            "@id": "dyn-coord:MassCoordinate",
+            "@context": {
+                "mass": {
+                    "@id": "dyn-coord:mass"
+                }
+            }
         },
-        "ixz": {
-            "@id": "dyn-coord:ixz",
-            "@type": "xsd:double"
+        "FirstMomentOfMassVectorXYZ": {
+            "@id": "dyn-coord:FirstMomentOfMassVectorXYZ",
+            "@context": {
+                "first-moment-of-mass": {
+                    "@id": "dyn-coord:first-moment-of-mass",
+                    "@container": "@list"
+                }
+            }
         },
-        "iyy": {
-            "@id": "dyn-coord:iyy",
-            "@type": "xsd:double"
+        "RotationalInertiaCoordinate": {
+            "@id": "dyn-coord:RotationalInertiaCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "dyn-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "iyz": {
-            "@id": "dyn-coord:iyz",
-            "@type": "xsd:double"
+        "MomentOfInertiaXYZ": {
+            "@id": "dyn-coord:MomentOfInertiaXYZ",
+            "@context": {
+                "ixx": {
+                    "@id": "dyn-coord:ixx"
+                },
+                "iyy": {
+                    "@id": "dyn-coord:iyy"
+                },
+                "izz": {
+                    "@id": "dyn-coord:izz"
+                }
+            }
         },
-        "izz": {
-            "@id": "dyn-coord:izz",
-            "@type": "xsd:double"
+        "ProductOfInertiaXYZ": {
+            "@id": "dyn-coord:ProductOfInertiaXYZ",
+            "@context": {
+                "ixy": {
+                    "@id": "dyn-coord:ixy"
+                },
+                "ixz": {
+                    "@id": "dyn-coord:ixz"
+                },
+                "iyz": {
+                    "@id": "dyn-coord:iyz"
+                }
+            }
+        },
+        "RigidBodyInertiaCoordinate": {
+            "@id": "dyn-coord:RigidBodyInertiaCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "dyn-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
+        },
+        "UniformGravitationalFieldCoordinate": {
+            "@id": "dyn-coord:UniformGravitationalFieldCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "dyn-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         }
     }
 }

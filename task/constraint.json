@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "cstr": "https://comp-rob2b.github.io/metamodels/task/constraint#",
+
+        "Constraint": {
+            "@id": "cstr:Constraint",
+            "@context": {
+                "quantity": {
+                    "@id": "cstr:quantity",
+                    "@type": "@id"
+                }
+            }
+        },
+        "GreaterThanConstraint": "cstr:GreaterThanConstraint",
+        "LessThanConstraint": "cstr:LessThanConstraint",
+        "UnilateralConstraint": {
+            "@id": "cstr:UnilateralConstraint",
+            "@context": {
+                "threshold": {
+                    "@id": "cstr:threshold",
+                    "@type": "@id"
+                }
+            }
+        },
+        "BilateralConstraint": {
+            "@id": "cstr:BilateralConstraint",
+            "@context": {
+                "lower-threshold": {
+                    "@id": "cstr:lower-threshold",
+                    "@type": "@id"
+                },
+                "upper-threshold": {
+                    "@id": "cstr:upper-threshold",
+                    "@type": "@id"
+                }
+            }
+        },
+        "EqualityConstraint": {
+            "@id": "cstr:EqualityConstraint",
+            "@context": {
+                "reference-value": {
+                    "@id": "cstr:reference-value",
+                    "@type": "@id"
+                }
+            }
+        },
+
+        "LinearDistanceConstraint": "cstr:LinearDistanceConstraint",
+        "PositionConstraint": "cstr:PositionConstraint",
+        "AngularVelocityConstraint": "cstr:AngularVelocityConstraint",
+        "LinearVelocityConstraint": "cstr:LinearVelocityConstraint",
+        "AngularAccelerationConstraint": "cstr:AngularAccelerationConstraint",
+        "LinearAccelerationConstraint": "cstr:LinearAccelerationConstraint",
+        "TorqueConstraint": "cstr:TorqueConstraint",
+        "ForceConstraint": "cstr:ForceConstraint"
+    }
+}

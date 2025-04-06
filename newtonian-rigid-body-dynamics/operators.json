@@ -1,0 +1,150 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "dyn-op": "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+        "AssignWrench": "dyn-op:AssignWrench",
+        "InvertWrench": "dyn-op:InvertWrench",
+        "AccelerationTwistToWrenchWithRigidBodyInertia": {
+            "@id": "dyn-op:AccelerationTwistToWrenchWithRigidBodyInertia",
+            "@context": {
+                "rigid-body-inertia": {
+                    "@id": "dyn-op:rigid-body-inertia",
+                    "@type": "@id"
+                },
+                "acceleration-twist": {
+                    "@id": "dyn-op:acceleration-twist",
+                    "@type": "@id"
+                },
+                "wrench": {
+                    "@id": "dyn-op:wrench",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AddWrench": {
+            "@id": "dyn-op:AddWrench",
+            "@context": {
+                "in1": {
+                    "@id": "dyn-op:in1",
+                    "@type": "@id"
+                },
+                "in2": {
+                    "@id": "dyn-op:in2",
+                    "@type": "@id"
+                },
+                "out": {
+                    "@id": "dyn-op:out",
+                    "@type": "@id"
+                },
+                "number-of-wrenches": "dyn-op:number-of-wrenches"
+            }
+        },
+        "AccumulateWrench": {
+            "@id": "dyn-op:AccumulateWrench",
+            "@context": {
+                "aggregate": {
+                    "@id": "dyn-op:aggregate",
+                    "@type": "@id"
+                },
+                "element": {
+                    "@id": "dyn-op:element",
+                    "@type": "@id"
+                },
+                "number-of-wrenches": "dyn-op:number-of-wrenches"
+            }
+        },
+        "InertialWrench": {
+            "@id": "dyn-op:InertialWrench",
+            "@context": {
+                "rigid-body-inertia": {
+                    "@id": "dyn-op:rigid-body-inertia",
+                    "@type": "@id"
+                },
+                "velocity-twist": {
+                    "@id": "dyn-op:velocity-twist",
+                    "@type": "@id"
+                },
+                "wrench": {
+                    "@id": "dyn-op:wrench",
+                    "@type": "@id"
+                }
+            }
+        },
+        "TransformWrenchToProximal": {
+            "@id": "dyn-op:TransformWrenchToProximal",
+            "@context": {
+                "from": {
+                    "@id": "dyn-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "dyn-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "dyn-op:pose",
+                    "@type": "@id"
+                },
+                "at-index": "dyn-op:at-index",
+                "number-of-wrenches": "dyn-op:number-of-wrenches"
+            }
+        },
+        "RotateWrenchToDistalWithPose": {
+            "@id": "dyn-op:RotateWrenchToDistalWithPose",
+            "@context": {
+                "from": {
+                    "@id": "dyn-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "dyn-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "dyn-op:pose",
+                    "@type": "@id"
+                }
+            }
+        },
+        "RotateWrenchToProximalWithPose": {
+            "@id": "dyn-op:RotateWrenchToProximalWithPose",
+            "@context": {
+                "from": {
+                    "@id": "dyn-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "dyn-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "dyn-op:pose",
+                    "@type": "@id"
+                }
+            }
+        },
+        "WrenchFromPositionDirectionAndMagnitude": {
+            "@id": "dyn-op:WrenchFromPositionDirectionAndMagnitude",
+            "@context": {
+                "magnitude": {
+                    "@id": "dyn-op:magnitude",
+                    "@type": "@id"
+                },
+                "position": {
+                    "@id": "dyn-op:position",
+                    "@type": "@id"
+                },
+                "direction": {
+                    "@id": "dyn-op:direction",
+                    "@type": "@id"
+                },
+                "wrench": {
+                    "@id": "dyn-op:wrench",
+                    "@type": "@id"
+                }
+            }
+        }
+    }
+}

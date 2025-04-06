@@ -1,108 +1,192 @@
 {
     "@context": {
+        "@version": 1.1,
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "geom-coord": "https://comp-rob2b.github.io/metamodels/geometry/coordinates#",
 
-        "OrientationReference": "geom-coord:OrientationReference",
-        "PositionReference": "geom-coord:PositionReference",
-        "PoseReference": "geom-coord:PoseReference",
-        "VelocityReference": "geom-coord:VelocityReference",
-        "AccelerationReference": "geom-coord:AccelerationReference",
-
-        "OrientationCoordinate": "geom-coord:OrientationCoordinate",
-        "PositionCoordinate": "geom-coord:PositionCoordinate",
-        "PoseCoordinate": "geom-coord:PoseCoordinate",
-        "VelocityTwistCoordinate": "geom-coord:VelocityTwistCoordinate",
-        "AccelerationTwistCoordinate": "geom-coord:AccelerationTwistCoordinate",
-
-        "Coordinates": "geom-coord:Coordinates",
-        "DirectionCosineXYZ": "geom-coord:DirectionCosineXYZ",
-        "VectorXYZ": "geom-coord:VectorXYZ",
-        "AngularVelocityVectorXYZ": "geom-coord:AngularVelocityVectorXYZ",
-        "LinearVelocityVectorXYZ": "geom-coord:LinearVelocityVectorXYZ",
-        "AngularAccelerationVectorXYZ": "geom-coord:AngularAccelerationVectorXYZ",
-        "LinearAccelerationVectorXYZ": "geom-coord:LinearAccelerationVectorXYZ",
-
-        "of-orientation": {
-            "@id": "geom-coord:of-orientation",
-            "@type": "@id"
+        "OrientationReference": {
+            "@id": "geom-coord:OrientationReference",
+            "@context": {
+                "of-orientation": {
+                    "@id": "geom-coord:of-orientation",
+                    "@type": "@id"
+                }
+            }
         },
-        "of-position": {
-            "@id": "geom-coord:of-position",
-            "@type": "@id"
+        "PositionReference": {
+            "@id": "geom-coord:PositionReference",
+            "@context": {
+                "of-position": {
+                    "@id": "geom-coord:of-position",
+                    "@type": "@id"
+                }
+            }
         },
-        "of-pose": {
-            "@id": "geom-coord:of-pose",
-            "@type": "@id"
+        "PoseReference": {
+            "@id": "geom-coord:PoseReference",
+            "@context": {
+                "of-pose": {
+                    "@id": "geom-coord:of-pose",
+                    "@type": "@id"
+                }
+            }
         },
-        "of-velocity": {
-            "@id": "geom-coord:of-velocity",
-            "@type": "@id"
+        "VelocityReference": {
+            "@id": "geom-coord:VelocityReference",
+            "@context": {
+                "of-velocity": {
+                    "@id": "geom-coord:of-velocity",
+                    "@type": "@id"
+                }
+            }
         },
-        "of-acceleration": {
-            "@id": "geom-coord:of-acceleration",
-            "@type": "@id"
+        "AccelerationReference": {
+            "@id": "geom-coord:AccelerationReference",
+            "@context": {
+                "of-acceleration": {
+                    "@id": "geom-coord:of-acceleration",
+                    "@type": "@id"
+                }
+            }
         },
-        "as-seen-by": {
-            "@id": "geom-coord:as-seen-by",
-            "@type": "@id"
-        },
-
-        "coordinates": {
-            "@id": "geom-coord:coordinates",
-            "@type": "@id",
-            "@container": "@list"
-        },
-        "angular": {
-            "@id": "geom-coord:angular",
-            "@type": "@id",
-            "@container": "@list"
-        },
-        "linear": {
-            "@id": "geom-coord:linear",
-            "@type": "@id",
-            "@container": "@list"
+        "DistanceReference": {
+            "@id": "geom-coord:DistanceReference",
+            "@context": {
+                "of": {
+                    "@id": "geom-coord:of",
+                    "@type": "@id"
+                }
+            }
         },
 
-        "direction-cosine-x": {
-            "@id": "geom-coord:direction-cosine-x",
-            "@container": "@list"
+        "OrientationCoordinate": {
+            "@id": "geom-coord:OrientationCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "direction-cosine-y": {
-            "@id": "geom-coord:direction-cosine-y",
-            "@container": "@list"
+        "PositionCoordinate": {
+            "@id": "geom-coord:PositionCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "direction-cosine-z": {
-            "@id": "geom-coord:direction-cosine-z",
-            "@container": "@list"
+        "PoseCoordinate": {
+            "@id": "geom-coord:PoseCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "x": {
-            "@id": "geom-coord:x",
-            "@type": "xsd:double"
+        "VelocityTwistCoordinate": {
+            "@id": "geom-coord:VelocityTwistCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "y": {
-            "@id": "geom-coord:y",
-            "@type": "xsd:double"
+        "AccelerationTwistCoordinate": {
+            "@id": "geom-coord:AccelerationTwistCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "z": {
-            "@id": "geom-coord:z",
-            "@type": "xsd:double"
+        "DirectionCoordinate": {
+            "@id": "geom-coord:DirectionCoordinate",
+            "@context": {
+                "as-seen-by": {
+                    "@id": "geom-coord:as-seen-by",
+                    "@type": "@id"
+                }
+            }
         },
-        "angular-velocity": {
-            "@id": "geom-coord:angular-velocity",
-            "@container": "@list"
+        "LinearDistanceCoordinate": "geom-coord:LinearDistanceCoordinate",
+
+        "DirectionCosineXYZ": {
+            "@id": "geom-coord:DirectionCosineXYZ",
+            "@context": {
+                "direction-cosine-x": {
+                    "@id": "geom-coord:direction-cosine-x",
+                    "@container": "@list",
+                    "@type": "xsd:double"
+                },
+                "direction-cosine-y": {
+                    "@id": "geom-coord:direction-cosine-y",
+                    "@container": "@list",
+                    "@type": "xsd:double"
+                },
+                "direction-cosine-z": {
+                    "@id": "geom-coord:direction-cosine-z",
+                    "@container": "@list",
+                    "@type": "xsd:double"
+                }
+            }
         },
-        "linear-velocity": {
-            "@id": "geom-coord:linear-velocity",
-            "@container": "@list"
+        "VectorXYZ": {
+            "@id": "geom-coord:VectorXYZ",
+            "@context": {
+                "x": {
+                    "@id": "geom-coord:x",
+                    "@type": "xsd:double"
+                },
+                "y": {
+                    "@id": "geom-coord:y",
+                    "@type": "xsd:double"
+                },
+                "z": {
+                    "@id": "geom-coord:z",
+                    "@type": "xsd:double"
+                }
+            }
         },
-        "angular-acceleration": {
-            "@id": "geom-coord:angular-acceleration",
-            "@container": "@list"
+        "AngularVelocityVectorXYZ": {
+            "@id": "geom-coord:AngularVelocityVectorXYZ",
+            "@context": {
+                "angular-velocity": {
+                    "@id": "geom-coord:angular-velocity",
+                    "@container": "@list"
+                }
+            }
         },
-        "linear-acceleration": {
-            "@id": "geom-coord:linear-acceleration",
-            "@container": "@list"
+        "LinearVelocityVectorXYZ": {
+            "@id": "geom-coord:LinearVelocityVectorXYZ",
+            "@context": {
+                "linear-velocity": {
+                    "@id": "geom-coord:linear-velocity",
+                    "@container": "@list"
+                }
+            }
+        },
+        "AngularAccelerationVectorXYZ": {
+            "@id": "geom-coord:AngularAccelerationVectorXYZ",
+            "@context": {
+                "angular-acceleration": {
+                    "@id": "geom-coord:angular-acceleration",
+                    "@container": "@list"
+                }
+            }
+        },
+        "LinearAccelerationVectorXYZ": {
+            "@id": "geom-coord:LinearAccelerationVectorXYZ",
+            "@context": {
+                "linear-acceleration": {
+                    "@id": "geom-coord:linear-acceleration",
+                    "@container": "@list"
+                }
+            }
         }
     }
 }

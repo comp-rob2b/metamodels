@@ -1,0 +1,27 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "mot": "https://comp-rob2b.github.io/metamodels/task/motion-specification#",
+
+        "GuardedMotion": {
+            "@id": "mot:GuardedMotion",
+            "@context": {
+                "when": {
+                    "@id": "mot:when",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "while": {
+                    "@id": "mot:while",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "until": {
+                    "@id": "mot:until",
+                    "@type": "@id",
+                    "@container": "@set"
+                }
+            }
+        }
+    }
+}

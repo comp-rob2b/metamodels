@@ -1,0 +1,181 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "slv": "https://comp-rob2b.github.io/metamodels/task/solver-specification#",
+
+        "VelocityCompositionSolver": {
+            "@id": "slv:VelocityCompositionSolver",
+            "@context": {
+                "configuration": {
+                    "@id": "slv:configuration",
+                    "@type": "@id"
+                },
+                "velocity": {
+                    "@id": "slv:velocity",
+                    "@type": "@id"
+                }
+            }
+        },
+        "ForceDistributionSolver": {
+            "@id": "slv:ForceDistributionSolver",
+            "@context": {
+                "configuration": {
+                    "@id": "slv:configuration",
+                    "@type": "@id"
+                },
+                "force": {
+                    "@id": "slv:force",
+                    "@type": "@id"
+                }
+            }
+        },
+
+        "SolverWithInputAndOutput": {
+            "@id": "slv:SolverWithInputAndOutput",
+            "@context": {
+                "motion-drivers": {
+                    "@id": "slv:motion-drivers",
+                    "@type": "@id"
+                },
+                "output": {
+                    "@id": "slv:output",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "root": {
+                    "@id": "slv:root",
+                    "@type": "@id"
+                },
+                "gravity": {
+                    "@id": "slv:gravity",
+                    "@type": "@id"
+                },
+                "solver": {
+                    "@id": "slv:solver",
+                    "@type": "@vocab",
+                    "@context": {
+                        "RecursiveNewtonEulerAlgorithm": "slv:RecursiveNewtonEulerAlgorithm",
+                        "ArticulatedBodyAlgorithm": "slv:ArticulatedBodyAlgorithm",
+                        "AccelerationConstrainedHybridDynamicsAlgorithm": "slv:AccelerationConstrainedHybridDynamicsAlgorithm"
+                    }
+                }
+            }
+        },
+
+        "MotionDrivers": {
+            "@id": "slv:MotionDrivers",
+            "@context": {
+                "joint-force": {
+                    "@id": "slv:joint-force",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "joint-acceleration": {
+                    "@id": "slv:joint-acceleration",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "cartesian-force": {
+                    "@id": "slv:cartesian-force",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "acceleration-constraint": {
+                    "@id": "slv:acceleration-constraint",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "prioritization-hierarchy": {
+                    "@id": "slv:prioritization-hierarchy",
+                    "@type": "@id",
+                    "@container": "@list"
+                }
+            }
+        },
+
+        "CartesianForceSpecification": {
+            "@id": "slv:CartesianForceSpecification",
+            "@context": {
+                "force": {
+                    "@id": "slv:force",
+                    "@type": "@id"
+                },
+                "attached-to": {
+                    "@id": "slv:attached-to",
+                    "@type": "@id"
+                }
+            }
+        },
+        "JointForceSpecification": {
+            "@id": "slv:JointForceSpecification",
+            "@context": {
+                "force": {
+                    "@id": "slv:force",
+                    "@type": "@id"
+                },
+                "attached-to": {
+                    "@id": "slv:attached-to",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AccelerationConstraintSpecification": {
+            "@id": "slv:AccelerationConstraintSpecification",
+            "@context": {
+                "attached-to": {
+                    "@id": "slv:attached-to",
+                    "@type": "@id"
+                },
+                "constraints": {
+                    "@id": "slv:constraints",
+                    "@type": "@id",
+                    "@container": "@set"
+                }
+            }
+        },
+
+        "AccelerationConstraint": {
+            "@id": "slv:AccelerationConstraint",
+            "@context": {
+                "acceleration-energy": {
+                    "@id": "slv:acceleration-energy",
+                    "@type": "@id"
+                }
+            }
+        },
+
+        "AxisAligned": {
+            "@id": "slv:AxisAligned",
+            "@context": {
+                "subspace": {
+                    "@id": "slv:subspace",
+                    "@type": "@vocab",
+                    "@context": {
+                        "angular-acceleration": "slv:angular-acceleration",
+                        "linear-acceleration": "slv:linear-acceleration"
+                    }
+                },
+                "axis": {
+                    "@id": "slv:axis",
+                    "@type": "@vocab",
+                    "@context": {
+                        "x": "slv:x",
+                        "y": "slv:y",
+                        "z": "slv:z"
+                    }
+                }
+            }
+        },
+
+        "PrioritizationLevel": {
+            "@id": "slv:PrioritizationLevel",
+            "@context": {
+                "motion-drivers": {
+                    "@id": "slv:motion-drivers",
+                    "@type": "@id",
+                    "@container": "@set"
+                }
+            }
+        }
+    }
+}

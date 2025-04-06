@@ -1,8 +1,11 @@
 {
     "@context": {
+        "@version": 1.1,
         "geom": "https://comp-rob2b.github.io/metamodels/geometry/structural-entities#",
 
+        "Affine": "geom:Affine",
         "Euclidean": "geom:Euclidean",
+        "Projective": "geom:Projective",
 
         "2D": "geom:2D",
         "3D": "geom:3D",

@@ -1,7 +1,29 @@
 {
     "@context": {
+        "@version": 1.1,
         "qudt-schema": "http://qudt.org/schema/qudt/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
 
+        "Quantity": {
+            "@id": "qudt-schema:Quantity",
+            "@context": {
+                "unit": {
+                    "@id": "qudt-schema:unit",
+                    "@type": "@id",
+                    "@context": {
+                        "@base": "http://qudt.org/vocab/unit/"
+                    }
+                },
+                "value": {
+                    "@id": "qudt-schema:value",
+                    "@type": "xsd:decimal"
+                },
+                "dimensions": {
+                    "@id": "qudt-schema:dimensions",
+                    "@type": "xsd:decimal"
+                }
+            }
+        },
         "quantity-kind": {
             "@id": "qudt-schema:hasQuantityKind",
             "@type": "@id",
@@ -15,7 +37,6 @@
             "@context": {
                 "@base": "http://qudt.org/vocab/unit/"
             }
-        },
-        "value": "qudt-schema:value"
+        }
     }
 }

@@ -1,36 +1,174 @@
 {
     "@context": {
+        "@version": 1.1,
         "geom-rel": "https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#",
 
-        "Orientation": "geom-rel:Orientation",
-        "Position": "geom-rel:Position",
-        "Pose": "geom-rel:Pose",
-        "AngularVelocity": "geom-rel:AngularVelocity",
-        "LinearVelocity": "geom-rel:LinearVelocity",
-        "VelocityTwist": "geom-rel:VelocityTwist",
-        "AngularAcceleration": "geom-rel:AngularAcceleration",
-        "LinearAcceleration": "geom-rel:LinearAcceleration",
-        "AccelerationTwist": "geom-rel:AccelerationTwist",
-
-        "of": {
-            "@id": "geom-rel:of",
-            "@type": "@id"
+        "Orientation": {
+            "@id": "geom-rel:Orientation",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                }
+            }
         },
-        "with-respect-to": {
-            "@id": "geom-rel:with-respect-to",
-            "@type": "@id"
+        "Position": {
+            "@id": "geom-rel:Position",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                }
+            }
         },
-        "reference-point": {
-            "@id": "geom-rel:reference-point",
-            "@type": "@id"
+        "Pose": {
+            "@id": "geom-rel:Pose",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AngularVelocity": {
+            "@id": "geom-rel:AngularVelocity",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                }
+            }
+        },
+        "LinearVelocity": {
+            "@id": "geom-rel:LinearVelocity",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                },
+                "reference-point": {
+                    "@id": "geom-rel:reference-point",
+                    "@type": "@id"
+                }
+            }
+        },
+        "VelocityTwist": {
+            "@id": "geom-rel:VelocityTwist",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                },
+                "reference-point": {
+                    "@id": "geom-rel:reference-point",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AngularAcceleration": {
+            "@id": "geom-rel:AngularAcceleration",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                }
+            }
+        },
+        "LinearAcceleration": {
+            "@id": "geom-rel:LinearAcceleration",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                },
+                "reference-point": {
+                    "@id": "geom-rel:reference-point",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AccelerationTwist": {
+            "@id": "geom-rel:AccelerationTwist",
+            "@context": {
+                "of": {
+                    "@id": "geom-rel:of",
+                    "@type": "@id"
+                },
+                "with-respect-to": {
+                    "@id": "geom-rel:with-respect-to",
+                    "@type": "@id"
+                },
+                "reference-point": {
+                    "@id": "geom-rel:reference-point",
+                    "@type": "@id"
+                }
+            }
         },
 
+        "LinearDistance": {
+            "@id": "geom-rel:LinearDistance",
+            "@context": {
+                "between-entities": {
+                    "@id": "geom-rel:between-entities",
+                    "@type": "@id"
+                }
+            }
+        },
+        "PointToPointDistance": "geom-rel:PointToPointDistance",
 
-        "LineCollinearity": "geom-rel:LineCollinearity",
-
-        "lines": {
-            "@id": "geom-rel:lines",
-            "@type": "@id"
+        "PointLineCollinearity": {
+            "@id": "geom-rel:PointLineCollinearity",
+            "@context": {
+                "point": {
+                    "@id": "geom-rel:point",
+                    "@type": "@id"
+                },
+                "line": {
+                    "@id": "geom-rel:line",
+                    "@type": "@id"
+                }
+            }
+        },
+        "LineCollinearity": {
+            "@id": "geom-rel:LineCollinearity",
+            "@context": {
+                "lines": {
+                    "@id": "geom-rel:lines",
+                    "@type": "@id"
+                }
+            }
         }
     }
 }

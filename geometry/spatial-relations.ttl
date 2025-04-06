@@ -1,0 +1,85 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geom-ent: <https://comp-rob2b.github.io/metamodels/geometry/structural-entities#> .
+@prefix geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#> .
+
+geom-rel:Pose
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-rel:of ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] ;
+    sh:property [
+        sh:path geom-rel:with-respect-to ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Frame
+    ] .
+
+geom-rel:VelocityTwist
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-rel:of ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:SimplicialComplex
+    ] ;
+    sh:property [
+        sh:path geom-rel:with-respect-to ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:SimplicialComplex
+    ] ;
+    sh:property [
+        sh:path geom-rel:reference-point ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Point
+    ] .
+
+geom-rel:AccelerationTwist
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-rel:of ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:SimplicialComplex
+    ] ;
+    sh:property [
+        sh:path geom-rel:with-respect-to ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:SimplicialComplex
+    ] ;
+    sh:property [
+        sh:path geom-rel:reference-point ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-ent:Point
+    ] .
+
+geom-rel:LinearDistance
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-rel:between-entities ;
+        sh:minCount 2 ;
+        sh:nodeKind sh:BlankNodeOrIRI
+    ] .
+
+geom-rel:PointToPointDistance
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path geom-rel:between-entities ;
+        sh:maxCount 2 ;
+        sh:class geom-ent:Point
+    ] .

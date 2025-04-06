@@ -1,0 +1,277 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#> .
+@prefix dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#> .
+
+dyn-op:AddWrench
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path dyn-op:in1 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:in2 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:out ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:sparql dyn-op:AddWrench-same-ref ;
+    sh:sparql dyn-op:AddWrench-same-asb .
+
+dyn-op:AddWrench-same-ref
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX dyn-ent: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:in1 / dyn-ent:reference-point ?in1_ref .
+            $this dyn-op:in2 / dyn-ent:reference-point ?in2_ref .
+            $this dyn-op:out / dyn-ent:reference-point ?out_ref .
+            FILTER(?in1_ref != ?in2_ref)
+            FILTER(?in1_ref != ?out_ref)
+        }
+    """ .
+
+dyn-op:AddWrench-same-asb
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:in1 / dyn-coord:as-seen-by ?in1_ref .
+            $this dyn-op:in2 / dyn-coord:as-seen-by ?in2_ref .
+            $this dyn-op:out / dyn-coord:as-seen-by ?out_ref .
+            FILTER(?in1_ref != ?in2_ref)
+            FILTER(?in1_ref != ?out_ref)
+        }
+    """ .
+
+
+dyn-op:RotateWrenchToDistalWithPose
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path dyn-op:pose ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-coord:PoseCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:from ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:to ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:sparql dyn-op:RotateWrenchToDistalWithPose-from-ref-equals-to-ref ;
+    sh:sparql dyn-op:RotateWrenchToDistalWithPose-from-asb-equals-pose-wrt ;
+    sh:sparql dyn-op:RotateWrenchToDistalWithPose-to-asb-equals-pose-of .
+
+dyn-op:RotateWrenchToDistalWithPose-from-ref-equals-to-ref
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX dyn-ent: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:from / dyn-ent:reference-point ?from_ref .
+            $this dyn-op:to / dyn-ent:reference-point ?to_ref .
+            FILTER(?from_ref != ?to_ref)
+        }
+    """ .
+
+dyn-op:RotateWrenchToDistalWithPose-from-asb-equals-pose-wrt
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:from / dyn-coord:as-seen-by ?from_asb .
+            $this dyn-op:pose / geom-rel:with-respect-to ?pose_wrt .
+            FILTER(?from_asb != ?pose_wrt)
+        }
+    """ .
+
+dyn-op:RotateWrenchToDistalWithPose-to-asb-equals-pose-of
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:to / dyn-coord:as-seen-by ?to_asb .
+            $this dyn-op:pose / geom-rel:of ?pose_of .
+            FILTER(?to_asb != ?pose_of)
+        }
+    """ .
+
+
+dyn-op:RotateWrenchToProximalWithPose
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path dyn-op:pose ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-coord:PoseCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:from ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:to ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:sparql dyn-op:RotateWrenchToProximalWithPose-from-ref-equals-to-ref ;
+    sh:sparql dyn-op:RotateWrenchToProximalWithPose-from-asb-equals-pose-of ;
+    sh:sparql dyn-op:RotateWrenchToProximalWithPose-to-asb-equals-pose-wrt .
+
+dyn-op:RotateWrenchToProximalWithPose-from-ref-equals-to-ref
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX dyn-ent: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:from / dyn-ent:reference-point ?from_ref .
+            $this dyn-op:to / dyn-ent:reference-point ?to_ref .
+            FILTER(?from_ref != ?to_ref)
+        }
+    """ .
+
+dyn-op:RotateWrenchToProximalWithPose-from-asb-equals-pose-of
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:from / dyn-coord:as-seen-by ?from_asb .
+            $this dyn-op:pose / geom-rel:of ?pose_of .
+            FILTER(?from_asb != ?pose_of)
+        }
+    """ .
+
+dyn-op:RotateWrenchToProximalWithPose-to-asb-equals-pose-wrt
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:to / dyn-coord:as-seen-by ?to_asb .
+            $this dyn-op:pose / geom-rel:with-respect-to ?pose_wrt .
+            FILTER(?to_asb != ?pose_wrt)
+        }
+    """ .
+
+
+dyn-op:WrenchFromPositionDirectionAndMagnitude
+    a rdfs:Class, sh:NodeShape ;
+    sh:property [
+        sh:path dyn-op:magnitude ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class qudt:Quantity
+    ] ;
+    sh:property [
+        sh:path dyn-op:position ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-coord:PositionCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:direction ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class geom-coord:DirectionCoordinate
+    ] ;
+    sh:property [
+        sh:path dyn-op:wrench ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:class dyn-coord:WrenchCoordinate
+    ] ;
+    sh:sparql dyn-op:WrenchFromPositionDirectionAndMagnitude-position-asb-equals-direction-asb ;
+    sh:sparql dyn-op:WrenchFromPositionDirectionAndMagnitude-position-wrt-equals-wrench-ref ;
+    sh:sparql dyn-op:WrenchFromPositionDirectionAndMagnitude-position-asb-equals-wrench-asb .
+
+dyn-op:WrenchFromPositionDirectionAndMagnitude-position-asb-equals-direction-asb
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:position / geom-coord:as-seen-by ?pos_asb .
+            $this dyn-op:direction / geom-coord:as-seen-by ?dir_asb .
+            FILTER(?pos_asb != ?dir_asb)
+        }
+    """ .
+
+dyn-op:WrenchFromPositionDirectionAndMagnitude-position-wrt-equals-wrench-ref
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-rel: <https://comp-rob2b.github.io/metamodels/geometry/spatial-relations#>
+        PREFIX dyn-ent: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/structural-entities#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:position / geom-rel:with-respect-to ?pos_wrt .
+            $this dyn-op:wrench / dyn-ent:reference-point ?wrench_ref .
+            FILTER(?pos_wrt != ?wrench_ref)
+        }
+    """ .
+
+dyn-op:WrenchFromPositionDirectionAndMagnitude-position-asb-equals-wrench-asb
+    a sh:SPARQLConstraint ;
+    sh:select """
+        PREFIX geom-coord: <https://comp-rob2b.github.io/metamodels/geometry/coordinates#>
+        PREFIX dyn-coord: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/coordinates#>
+        PREFIX dyn-op: <https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics/operators#>
+        SELECT $this
+        WHERE {
+            $this dyn-op:position / geom-coord:as-seen-by ?pos_asb .
+            $this dyn-op:wrench / dyn-coord:as-seen-by ?wrench_asb .
+            FILTER(?pos_asb != ?wrench_asb)
+        }
+    """ .

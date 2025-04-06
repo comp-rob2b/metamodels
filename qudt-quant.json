@@ -1,0 +1,21 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "qudt-quant": "http://qudt.org/vocab/quantitykind/",
+
+        "PlaneAngle": "qudt-quant:PlaneAngle",
+        "Distance": "qudt-quant:Distance",
+        "Position": "qudt-quant:Position",
+        "AngularSpeed": "qudt-quant:AngularSpeed",
+        "AngularVelocity": "qudt-quant:AngularVelocity",
+        "LinearSpeed": "qudt-quant:LinearSpeed",
+        "LinearVelocity": "qudt-quant:LinearVelocity",
+        "AngularAcceleration": "qudt-quant:AngularAcceleration",
+        "LinearAcceleration": "qudt-quant:LinearAcceleration",
+        "Torque": "qudt-quant:Torque",
+        "Force": "qudt-quant:Force",
+        "AccelerationEnergy": "qudt-quant:AccelerationEnergy",
+
+        "value": "qudt-quant:value"
+    }
+}

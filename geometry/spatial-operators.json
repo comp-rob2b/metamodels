@@ -1,20 +1,225 @@
 {
     "@context": {
-        "geom": "https://comp-rob2b.github.io/metamodels/geometry/spatial-operators#",
+        "@version": 1.1,
+        "geom-op": "https://comp-rob2b.github.io/metamodels/geometry/spatial-operators#",
 
-        "ComposePose": "geom:ComposePose",
-
-        "pose1": {
-            "@id": "geom:pose1",
-            "@type": "@id"
+        "RotateDirectionDistalToProximalWithPose": {
+            "@id": "geom-op:RotateDirectionDistalToProximalWithPose",
+            "@context": {
+                "from": {
+                    "@id": "geom-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "geom-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                }
+            }
         },
-        "pose2": {
-            "@id": "geom:pose2",
-            "@type": "@id"
+        "InvertAngle": {
+            "@id": "geom-op:InvertAngle",
+            "@context": {
+                "in": {
+                    "@id": "geom-op:in",
+                    "@type": "@id"
+                },
+                "out": {
+                    "@id": "geom-op:out",
+                    "@type": "@id"
+                }
+            }
         },
-        "pose-out": {
-            "@id": "geom:pose-out",
-            "@type": "@id"
+        "PlanarAngleFromDirections": {
+            "@id": "geom-op:PlanarAngleFromDirections",
+            "@context": {
+                "from-directions": {
+                    "@id": "geom-op:from-directions",
+                    "@type": "@id"
+                },
+                "angle": {
+                    "@id": "geom-op:angle",
+                    "@type": "@id"
+                }
+            }
+        },
+        "PoseToAngleAroundAxis": {
+            "@id": "geom-op:PoseToAngleAroundAxis",
+            "@context": {
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                },
+                "angle": {
+                    "@id": "geom-op:angle",
+                    "@type": "@id"
+                },
+                "axis": {
+                    "@id": "geom-op:axis",
+                    "@type": "@vocab",
+                    "@context": {
+                        "x": "geom-op:x",
+                        "y": "geom-op:y",
+                        "z": "geom-op:z"
+                    }
+                }
+            }
+        },
+        "PoseToLinearDistance": {
+            "@id": "geom-op:PoseToLinearDistance",
+            "@context": {
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                },
+                "distance": {
+                    "@id": "geom-op:distance",
+                    "@type": "@id"
+                }
+            }
+        },
+        "PoseToDirection": {
+            "@id": "geom-op:PoseToDirection",
+            "@context": {
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                },
+                "direction": {
+                    "@id": "geom-op:direction",
+                    "@type": "@id"
+                }
+            }
+        },
+        "ComposePose": {
+            "@id": "geom-op:ComposePose",
+            "@context": {
+                "in1": {
+                    "@id": "geom-op:in1",
+                    "@type": "@id"
+                },
+                "in2": {
+                    "@id": "geom-op:in2",
+                    "@type": "@id"
+                },
+                "composite": {
+                    "@id": "geom-op:composite",
+                    "@type": "@id"
+                }
+            }
+        },
+        "RotateVelocityTwistToProximalWithPose": {
+            "@id": "geom-op:RotateVelocityTwistToProximalWithPose",
+            "@context": {
+                "from": {
+                    "@id": "geom-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "geom-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AddVelocityTwist": {
+            "@id": "geom-op:AddVelocityTwist",
+            "@context": {
+                "in1": {
+                    "@id": "geom-op:in1",
+                    "@type": "@id"
+                },
+                "in2": {
+                    "@id": "geom-op:in2",
+                    "@type": "@id"
+                },
+                "composite": {
+                    "@id": "geom-op:composite",
+                    "@type": "@id"
+                }
+            }
+        },
+        "AddAccelerationTwist": {
+            "@id": "geom-op:AddAccelerationTwist",
+            "@context": {
+                "in1": {
+                    "@id": "geom-op:in1",
+                    "@type": "@id"
+                },
+                "in2": {
+                    "@id": "geom-op:in2",
+                    "@type": "@id"
+                },
+                "composite": {
+                    "@id": "geom-op:composite",
+                    "@type": "@id"
+                }
+            }
+        },
+        "TransformVelocityTwistToDistal": {
+            "@id": "geom-op:TransformVelocityTwistToDistal",
+            "@context": {
+                "from": {
+                    "@id": "geom-op:from",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "geom-op:to",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                }
+            }
+        },
+        "TransformAccelerationTwistToDistal": {
+            "@id": "geom-op:TransformAccelerationTwistToDistal",
+            "@context": {
+                "in": {
+                    "@id": "geom-op:in",
+                    "@type": "@id"
+                },
+                "pose": {
+                    "@id": "geom-op:pose",
+                    "@type": "@id"
+                },
+                "absolute-velocity": {
+                    "@id": "geom-op:absolute-velocity",
+                    "@type": "@id"
+                },
+                "relative-velocity": {
+                    "@id": "geom-op:relative-velocity",
+                    "@type": "@id"
+                },
+                "out": {
+                    "@id": "geom-op:out",
+                    "@type": "@id"
+                }
+            }
+        },
+        "TransformZeroAccelerationTwistToDistal": {
+            "@id": "geom-op:TransformZeroAccelerationTwistToDistal",
+            "@context": {
+                "absolute-velocity": {
+                    "@id": "geom-op:absolute-velocity",
+                    "@type": "@id"
+                },
+                "relative-velocity": {
+                    "@id": "geom-op:relative-velocity",
+                    "@type": "@id"
+                },
+                "to": {
+                    "@id": "geom-op:to",
+                    "@type": "@id"
+                }
+            }
         }
     }
 }
